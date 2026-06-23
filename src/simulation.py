@@ -1,5 +1,5 @@
 import numpy as np
-from config import ET_COEFF
+from src.config import ET_COEFF
 
 
 # ─────────────────────────────────────────────────────────────────────────────
