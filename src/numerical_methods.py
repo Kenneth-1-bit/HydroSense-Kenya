@@ -1,3 +1,5 @@
+import numpy as np
+
 def _result(root, iterations, error, converged):
     return {
         "root":       root,

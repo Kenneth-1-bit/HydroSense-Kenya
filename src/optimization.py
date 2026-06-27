@@ -1,5 +1,5 @@
 import numpy as np
-from simulation import calculate_et, compute_drainage
+from .simulation import calculate_et, compute_drainage
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -39,9 +39,13 @@ def schedule_zone(S0, rainfall, temp, wind, solar, humidity,
         if S_no_irr < min_moisture:
             # How much to apply to reach target (gross, before efficiency loss)
             net_required = irrigation_needed(S_no_irr, target_moisture, field_capacity)
-            gross_applied = net_required / max(efficiency, 1e-6)
-            irrigation[i] = gross_applied
+
+            gross_required = net_required / max(efficiency, 1e-6)
+
+            irrigation[i] = gross_required
+
         else:
+
             irrigation[i] = 0.0
 
         # Recompute moisture with irrigation applied
